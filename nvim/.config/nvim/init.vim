@@ -3,6 +3,10 @@ call plug#begin()
 
 Plug 'lewis6991/impatient.nvim'
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
+
 Plug 'dracula/vim'
 Plug 'ryanoasis/vim-devicons'
 
