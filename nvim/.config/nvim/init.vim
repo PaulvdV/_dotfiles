@@ -23,6 +23,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-project.nvim'
 
 Plug 'neovim/nvim-lspconfig'
+Plug 'j-hui/fidget.nvim'
 
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
