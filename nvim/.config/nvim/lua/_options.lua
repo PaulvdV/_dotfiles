@@ -26,7 +26,7 @@ opt.hidden = true -- required to keep multiple buffers and open multiple buffers
 opt.hlsearch = false -- highlight all matches on previous search pattern
 
 opt.ignorecase = false -- ignore case in search patterns
-opt.inccomand = "nosplit"
+opt.inccommand = "nosplit"
 
 opt.laststatus = 2 -- hide statusline
 opt.listchars = "tab:│ ,trail:·,nbsp:+"
@@ -37,7 +37,10 @@ opt.mousemodel = "popup"
 
 opt.number = true -- set numbered lines
 opt.numberwidth = 4 -- set number column width to 2 {default 4}
+
 opt.pumheight = 10 -- pop up menu height
+opt.pg = 20
+
 
 opt.relativenumber = true -- set relative numbered lines
 
@@ -65,6 +68,7 @@ opt.termguicolors = false -- set term gui colors (most terminals support this)
 opt.timeoutlen = 500 -- timeout length
 opt.titlestring = "%<%F" -- what the title of the window will be set to
 opt.title = true -- set the title of window to the value of the titlestring
+opt.tgc = true
 
 opt.undodir = "/tmp"
 opt.undofile = true -- enable persistent undo
@@ -73,6 +77,7 @@ opt.updatetime = 50 -- faster completion
 opt.wrap = false -- display lines as one long line
 opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
 opt.wildignore = "/home/paul/**/node_modules/**"
+opt.winblend = 20
 
 g.netrw_liststyle = 3
 g.netrw_banner = 0
