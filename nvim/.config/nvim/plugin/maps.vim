@@ -7,8 +7,6 @@ nnoremap <silent><C-Down> :wincmd j<cr>
 
 "general
 nnoremap <leader>w :w<CR>
-nnoremap l <C-w><C-w>
-nnoremap L <C-w>W
 nnoremap <leader>h :split<CR>
 nnoremap <leader>v :vsplit<CR>
 

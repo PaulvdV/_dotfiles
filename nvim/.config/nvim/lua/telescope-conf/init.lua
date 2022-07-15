@@ -38,7 +38,6 @@ require("telescope").setup({
         winblend = 20,
         border = {},
         borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-        -- borderchars = { " ", " ", " ", " ", "｢", " ", "｣", " " },
         color_devicons = true,
         use_less = true,
         path_display = {},

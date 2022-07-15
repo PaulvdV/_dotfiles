@@ -30,7 +30,7 @@ set mousemodel=popup
 
 set scrolloff=8
 set clipboard+=unnamedplus
-set spitright
-set inccomman=nosplit
+set splitright
+set inccommand=nosplit
 
 set wildignore=/home/paul/**/node_modules/**
