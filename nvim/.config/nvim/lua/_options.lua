@@ -65,7 +65,7 @@ opt.swapfile = false -- creates a swapfile
 
 opt.tabstop = 2 -- insert 2 spaces for a tab
 opt.termguicolors = false -- set term gui colors (most terminals support this)
-opt.timeoutlen = 500 -- timeout length
+opt.timeoutlen = 250 -- timeout length
 opt.titlestring = "%<%F" -- what the title of the window will be set to
 opt.title = true -- set the title of window to the value of the titlestring
 opt.termguicolors = true

@@ -128,7 +128,7 @@ local components = {
   location = {
     "location",
     padding = { left = 2, right = 0 },
-    separator = { right = separators.bubble.right }
+    separator = { right = separators.bubble.left }
   },
   progress = { "progress" },
   tabs = { "tabs", mode = 0 },
@@ -140,7 +140,7 @@ local components = {
       end
       return mode_symbols[mode_code]
     end,
-    separator = { left = separators.bubble.left }, 
+    separator = { left = separators.bubble.right }, 
     padding = { left = 0, right = 2 },
   },
 
@@ -191,7 +191,7 @@ end
 -- define how the statusline and tabline appear
 lualine.setup({
   options = {
-    theme = custom_theme,
+    theme = "dracula",
     icons_enabled = true,
     component_separators = "|",
     section_separators = separators.bubble,
@@ -204,7 +204,7 @@ lualine.setup({
     },
     lualine_b = {
       components.filename,
-      components.diff,
+      -- components.diff,
     },
     lualine_c = {},
     lualine_x = {},
@@ -239,5 +239,5 @@ lualine.setup({
     lualine_y = { components.tabs },
     lualine_z = {},
   },
-  extensions = { "nvim-tree" },
+  -- extensions = { "nvim-tree" },
 })

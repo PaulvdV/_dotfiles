@@ -2,7 +2,6 @@ local utils_ok, utils = pcall(require, "utils")
 if not utils_ok then
   return
 end
-
 local which_key = {
   setup = {
     plugins = {
