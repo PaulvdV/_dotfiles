@@ -3,7 +3,7 @@ local lsp = vim.lsp
 local fn = vim.fn
 local o = vim.o
 
-local utils_ok, utils = pcall(require, '_utils')
+local utils_ok, utils = pcall(require, 'utils')
 if not utils_ok then
   return
 end

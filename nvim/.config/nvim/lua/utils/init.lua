@@ -7,7 +7,7 @@ if not builtin_ok then
   return
 end
 
-local function _t(str)
+local function t(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
@@ -18,7 +18,7 @@ local function _smart_tab(direction)
     return vim.fn.pumvisible() == 1 and t("<C-p>") or t("<S-Tab>")
   end
 end
-local function smart_enter()
+local function _smart_enter()
   return vim.fn.pumvisible() == 1 and t("<C-y>") or t("<cr>")
 end
 
