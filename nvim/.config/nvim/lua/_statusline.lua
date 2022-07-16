@@ -204,13 +204,13 @@ lualine.setup({
     },
     lualine_b = {
       components.filename,
-      -- components.diff,
+      components.diff,
     },
     lualine_c = {},
     lualine_x = {},
     lualine_y = {
       components.diagnostics,
-      components.treesitter,
+      -- components.treesitter,
       components.branch,
       {
         lsp_name,
@@ -239,5 +239,5 @@ lualine.setup({
     lualine_y = { components.tabs },
     lualine_z = {},
   },
-  -- extensions = { "nvim-tree" },
+  extensions = { "nvim-tree" },
 })

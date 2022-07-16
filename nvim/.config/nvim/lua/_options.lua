@@ -79,5 +79,8 @@ opt.writebackup = false -- if a file is being edited by another program (or was 
 opt.wildignore = "/home/paul/**/node_modules/**"
 opt.winblend = 20
 
+opt.exrc = true
+opt.secure = true
+
 g.netrw_liststyle = 3
 g.netrw_banner = 0
