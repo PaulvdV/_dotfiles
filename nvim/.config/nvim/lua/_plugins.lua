@@ -25,6 +25,7 @@ return packer.startup(function()
     "dracula/vim",
     "kyazdani42/nvim-web-devicons",
     "nvim-lualine/lualine.nvim",
+    "folke/which-key.nvim"
   })
 
   use({
@@ -70,9 +71,15 @@ return packer.startup(function()
     config = function()
       require("gitsigns").setup({
         numhl = true,
-        noremap = false,
         yadm = { enable = false },
       })
+    end,
+  })
+  use({
+    "kyazdani42/nvim-tree.lua",
+    requires = { "kyazdani42/nvim-web-devicons" },
+    config = function()
+      require("nvim-tree").setup({})
     end,
   })
   use({

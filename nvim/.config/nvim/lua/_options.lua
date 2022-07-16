@@ -13,7 +13,7 @@ opt.cmdheight = 2 -- more space in the neovim command line for displaying messag
 opt.colorcolumn = "100" -- fixes indentline for now
 opt.completeopt = { "menuone", "noselect" }
 opt.conceallevel = 0 -- so that `` is visible in markdown files
-opt.cursorline = true -- highlight the current line
+opt.cursorline = false -- highlight the current line
 
 opt.expandtab = true -- convert tabs to spaces
 opt.encoding = "utf-8"
@@ -39,7 +39,7 @@ opt.number = true -- set numbered lines
 opt.numberwidth = 4 -- set number column width to 2 {default 4}
 
 opt.pumheight = 10 -- pop up menu height
-opt.pg = 20
+opt.pumblend = 20
 
 
 opt.relativenumber = true -- set relative numbered lines
@@ -68,7 +68,7 @@ opt.termguicolors = false -- set term gui colors (most terminals support this)
 opt.timeoutlen = 500 -- timeout length
 opt.titlestring = "%<%F" -- what the title of the window will be set to
 opt.title = true -- set the title of window to the value of the titlestring
-opt.tgc = true
+opt.termguicolors = true
 
 opt.undodir = "/tmp"
 opt.undofile = true -- enable persistent undo
