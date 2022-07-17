@@ -20,19 +20,19 @@ local function diff_source()
 end
 
 local function lsp_name()
-    local msg = ""
-    local buf_ft = api.nvim_buf_get_option(0, "filetype")
-    local clients = lsp.get_active_clients()
-    if next(clients) == nil then
-        return msg
-    end
-    for _, client in ipairs(clients) do
-        local filetypes = client.config.filetypes
-        if filetypes and fn.index(filetypes, buf_ft) ~= -1 then
-            return client.name
-        end
-    end
+  local msg = ""
+  local buf_ft = api.nvim_buf_get_option(0, "filetype")
+  local clients = lsp.get_active_clients()
+  if next(clients) == nil then
     return msg
+  end
+  for _, client in ipairs(clients) do
+    local filetypes = client.config.filetypes
+    if filetypes and fn.index(filetypes, buf_ft) ~= -1 then
+      return client.name
+    end
+  end
+  return msg
 end
 
 mode_symbols = {
@@ -114,10 +114,10 @@ local custom_theme = {
 }
 
 local separators = {
-    none = { left = "", right = "" },
-    arrow = { left = "", right = "" },
-    bubble = { left = "", right = "" },
-    slant = { left = "", right = "" },
+  none = { left = "", right = "" },
+  arrow = { left = "", right = "" },
+  bubble = { left = "", right = "" },
+  slant = { left = "", right = "" },
 }
 
 
@@ -140,7 +140,7 @@ local components = {
       end
       return mode_symbols[mode_code]
     end,
-    separator = { left = separators.bubble.right }, 
+    separator = { left = separators.bubble.right },
     padding = { left = 0, right = 2 },
   },
 
