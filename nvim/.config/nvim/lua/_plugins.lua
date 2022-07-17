@@ -25,7 +25,23 @@ return packer.startup(function()
     "dracula/vim",
     "kyazdani42/nvim-web-devicons",
     "nvim-lualine/lualine.nvim",
-    "folke/which-key.nvim"
+    "folke/which-key.nvim",
+
+    "pacha/vem-tabline",
+    "mhinz/vim-sayonara",
+  })
+
+  use({
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-path",
+    "hrsh7th/nvim-cmp",
+
+    "jose-elias-alvarez/null-ls.nvim",
+    "neovim/nvim-lspconfig",
+    "tamago324/nlsp-settings.nvim",
+    "williamboman/nvim-lsp-installer",
   })
 
   use({

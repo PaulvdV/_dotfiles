@@ -71,7 +71,6 @@ telescope.setup({
     project = {
       base_dirs = {
         "~/repos",
-        "~/.config",
       },
     },
   },
