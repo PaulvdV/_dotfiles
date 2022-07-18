@@ -52,7 +52,7 @@ local which_key = {
     ["<leader>f"] = { utils.find_project_files, "Find File" },
     ["<leader>p"] = { ":lua require('telescope').extensions.project.project({ noremap = true, silent = true })<cr>",
       "Find Project" },
-    ["<leader>e"] = { ":Telescope file_browser <CR>", "File Browser" },
+    ["<leader>e"] = { ":NvimTreeToggle<CR>", "File Browser" },
     ["<leader>h"] = { ":nohlsearch<CR>", "No Highlight" },
     ["H"] = { "<Plug>vem_prev_buffer-", "Buffer Previous" },
     ["L"] = { "<Plug>vem_next_buffer-", "Buffer Next" },
@@ -98,7 +98,8 @@ local which_key = {
     ["<leader>s"] = {
       name = "Search",
       b = { ":Telescope git_branches <cr>", "Checkout branch" },
-      c = { ":Telescope commands <cr>", "Commands" },
+      c = { ":Telescope colorscheme <cr>", "Colorscheme" },
+      C = { ":Telescope commands <cr>", "Commands" },
       f = { ":Telescope find_files <cr>", "Find File" },
       h = { ":Telescope help_tags <cr>", "Find Help" },
       j = { ":Telescope jumplist <cr>", "Jumplist" },
@@ -108,6 +109,10 @@ local which_key = {
       R = { ":Telescope registers <cr>", "Registers" },
       t = { ":Telescope live_grep <cr>", "Text" },
       n = { ":Telescope live_grep search_dirs={os.getenv('NOTES')} <cr>", "Notes" },
+      p = {
+        ":lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>",
+        "Colorscheme with Preview",
+      },
     },
   },
 }

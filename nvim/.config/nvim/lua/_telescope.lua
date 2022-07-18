@@ -5,7 +5,6 @@ end
 
 telescope.load_extension("fzf")
 telescope.load_extension("project")
-telescope.load_extension("file_browser")
 
 local previewers = require("telescope.previewers")
 local sorters = require("telescope.sorters")
