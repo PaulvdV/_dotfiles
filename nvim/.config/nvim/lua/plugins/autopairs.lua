@@ -14,9 +14,10 @@ if not cmp_autopairs_ok then
 end
 
 autopairs.setup({
+  map_complete = true,
+  map_cr = true,
   enable_check_bracket_line = false,
   ignored_next_char = "[%w%.]" -- will ignore alphanumeric and `.` symbol
 })
 
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
-
