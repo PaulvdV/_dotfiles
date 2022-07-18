@@ -75,7 +75,7 @@ opt.updatetime = 50 -- faster completion
 
 opt.wrap = false -- display lines as one long line
 opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
-opt.wildignore = "/home/paul/**/node_modules/**"
+-- opt.wildignore = "/home/paul/**/node_modules/**"
 opt.winblend = 20
 
 opt.secure = true

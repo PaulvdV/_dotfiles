@@ -5,6 +5,11 @@ end
 
 local command_resolver = require("null-ls.helpers.command_resolver")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+-- Helper to conditionally register eslint handlers only if eslint is
+-- configured. If eslint is not configured for a project, it just fails.
+local function has_no_prettier_configured(utils)
+  return not (utils.root_has_file(".prettierrc.js") or utils.root_has_file(".prettierrc"))
+end
 
 local sources = {
   null_ls.builtins.formatting.stylua,
@@ -24,14 +29,7 @@ local sources = {
   null_ls.builtins.diagnostics.markdownlint,
   null_ls.builtins.formatting.markdownlint,
 
--- javascript
-  null_ls.builtins.formatting.eslint_d.with({
-    dynamic_command = function(params)
-      return command_resolver.from_yarn_pnp(params)
-          or command_resolver.from_node_modules(params)
-          or vim.fn.executable(params.command) == 1 and params.command
-    end,
-  }),
+  -- javascript
   null_ls.builtins.code_actions.eslint_d.with({
     dynamic_command = function(params)
       return command_resolver.from_yarn_pnp(params)
@@ -46,6 +44,28 @@ local sources = {
           or vim.fn.executable(params.command) == 1 and params.command
     end,
   }),
+  null_ls.builtins.formatting.eslint_d.with({
+    condition = has_no_prettier_configured,
+    dynamic_command = function(params)
+      return command_resolver.from_yarn_pnp(params)
+          or command_resolver.from_node_modules(params)
+          or vim.fn.executable(params.command) == 1 and params.command
+    end,
+  }),
+  null_ls.builtins.formatting.prettierd.with({
+    -- Only register prettier if eslint_d is not running as a formatter. This
+    -- can happen if it's not configured for this project, or if it can't
+    -- handle the current filetype.
+    condition = function()
+      return #null_ls.get_source({ name = "eslint_d", method = null_ls.methods.FORMATTING }) == 0
+    end,
+    dynamic_command = function(params)
+      return command_resolver.from_yarn_pnp(params)
+          or command_resolver.from_node_modules(params)
+          or vim.fn.executable(params.command) == 1 and params.command
+    end,
+  }),
+
 
   null_ls.builtins.completion.spell,
 
