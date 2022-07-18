@@ -3,10 +3,6 @@ local lsp = vim.lsp
 local fn = vim.fn
 local o = vim.o
 
-local utils_ok, utils = pcall(require, 'utils')
-if not utils_ok then
-  return
-end
 
 local function diff_source()
   local gitsigns = vim.b.gitsigns_status_dict
@@ -69,17 +65,6 @@ local mode_symbols = {
 }
 
 
-local colors = {
-  background = utils.extract_highlight_colors("StatusLine", "bg", 247),
-  foreground = utils.extract_highlight_colors("StatusLine", "fg", 7),
-  red = utils.extract_highlight_colors("LspDiagnosticsDefaultError", "fg", 1),
-  green = utils.extract_highlight_colors("LspDiagnosticsDefaultError", "fg", 2),
-  yellow = utils.extract_highlight_colors("LspDiagnosticsDefaultHint", "fg", 3),
-  blue = utils.extract_highlight_colors("LspDiagnosticsDefaultInformation", "fg", 4),
-  orange = utils.extract_highlight_colors("LspDiagnosticsDefaultWarning", "fg", 208),
-  grey = utils.extract_highlight_colors("StatusLineNC", "fg", 8),
-}
-
 local separators = {
   none = { left = "", right = "" },
   arrow = { left = "", right = "" },
@@ -114,12 +99,6 @@ local components = {
     "diagnostics",
     sources = { "nvim_diagnostic", "coc" },
     symbols = { error = " ", warn = " ", info = " ", hint = " " },
-    diagnostics_color = {
-      error = { fg = colors.red },
-      warn = { fg = colors.yellow },
-      info = { fg = colors.blue },
-      hint = { fg = colors.grey },
-    },
   },
   branch = {
     "b:gitsigns_head",
@@ -130,11 +109,6 @@ local components = {
     "diff",
     source = diff_source,
     symbols = { added = " ", modified = " ", removed = " " },
-    diff_color = {
-      added = { fg = colors.green },
-      modified = { fg = colors.yellow },
-      removed = { fg = colors.red },
-    },
     color = {},
   },
   filetype = { "filetype", icon_only = true, colored = false },
