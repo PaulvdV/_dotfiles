@@ -102,10 +102,6 @@ return packer.startup(function()
     "kyazdani42/nvim-tree.lua",
     requires = { "kyazdani42/nvim-web-devicons" },
   })
-  use({
-    "rrethy/vim-hexokinase",
-    run = "make hexokinase"
-  })
 
   -- Automatically setup config after cloning packer
   if Packer_Bootstrap then
