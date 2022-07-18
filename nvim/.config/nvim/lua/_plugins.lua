@@ -70,6 +70,7 @@ return packer.startup(function()
       { "nvim-lua/popup.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
       { "nvim-telescope/telescope-project.nvim" },
+      { "nvim-telescope/telescope-file-browser.nvim" },
     }
   })
 
@@ -92,13 +93,6 @@ return packer.startup(function()
         numhl = true,
         yadm = { enable = false },
       })
-    end,
-  })
-  use({
-    "kyazdani42/nvim-tree.lua",
-    requires = { "kyazdani42/nvim-web-devicons" },
-    config = function()
-      require("nvim-tree").setup({})
     end,
   })
   use({
