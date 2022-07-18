@@ -20,22 +20,22 @@ local function diff_source()
 end
 
 local function lsp_name()
-    local msg = ""
-    local buf_ft = api.nvim_buf_get_option(0, "filetype")
-    local clients = lsp.get_active_clients()
-    if next(clients) == nil then
-        return msg
-    end
-    for _, client in ipairs(clients) do
-        local filetypes = client.config.filetypes
-        if filetypes and fn.index(filetypes, buf_ft) ~= -1 then
-            return client.name
-        end
-    end
+  local msg = ""
+  local buf_ft = api.nvim_buf_get_option(0, "filetype")
+  local clients = lsp.get_active_clients()
+  if next(clients) == nil then
     return msg
+  end
+  for _, client in ipairs(clients) do
+    local filetypes = client.config.filetypes
+    if filetypes and fn.index(filetypes, buf_ft) ~= -1 then
+      return client.name
+    end
+  end
+  return msg
 end
 
-mode_symbols = {
+local mode_symbols = {
   ["n"] = "",
   ["no"] = "*",
   ["nov"] = "*",
@@ -80,46 +80,12 @@ local colors = {
   grey = utils.extract_highlight_colors("StatusLineNC", "fg", 8),
 }
 
-local custom_theme = {
-  normal = {
-    a = { bg = colors.foreground, fg = colors.background },
-    b = { bg = colors.background, fg = colors.foreground },
-    c = { bg = colors.background, fg = colors.foreground },
-  },
-  insert = {
-    a = { bg = colors.blue, fg = colors.background },
-    b = { bg = colors.background, fg = colors.blue },
-    c = { bg = colors.background, fg = colors.foreground },
-  },
-  visual = {
-    a = { bg = colors.yellow, fg = colors.background },
-    b = { bg = colors.background, fg = colors.yellow },
-    c = { bg = colors.background, fg = colors.foreground },
-  },
-  replace = {
-    a = { bg = colors.red, fg = colors.background },
-    b = { bg = colors.background, fg = colors.red },
-    c = { bg = colors.background, fg = colors.foreground },
-  },
-  command = {
-    a = { bg = colors.orange, fg = colors.background },
-    b = { bg = colors.background, fg = colors.orange },
-    c = { bg = colors.background, fg = colors.foreground },
-  },
-  inactive = {
-    a = { bg = colors.background, fg = colors.grey },
-    b = { bg = colors.background, fg = colors.grey },
-    c = { bg = colors.background, fg = colors.grey },
-  },
-}
-
 local separators = {
-    none = { left = "", right = "" },
-    arrow = { left = "", right = "" },
-    bubble = { left = "", right = "" },
-    slant = { left = "", right = "" },
+  none = { left = "", right = "" },
+  arrow = { left = "", right = "" },
+  bubble = { left = "", right = "" },
+  slant = { left = "", right = "" },
 }
-
 
 local components = {
   buffers = { "buffers", mode = 0, show_filename_only = true, max_length = o.columns },
@@ -140,7 +106,7 @@ local components = {
       end
       return mode_symbols[mode_code]
     end,
-    separator = { left = separators.bubble.right }, 
+    separator = { left = separators.bubble.right },
     padding = { left = 0, right = 2 },
   },
 

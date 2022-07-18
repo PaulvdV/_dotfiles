@@ -1,4 +1,3 @@
-
 local g = vim.g
 local opt = vim.opt
 local fn = vim.fn
@@ -11,7 +10,7 @@ opt.backup = false -- creates a backup file
 opt.clipboard = "unnamedplus" -- don't use clipboard
 opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
 opt.colorcolumn = "100" -- fixes indentline for now
-opt.completeopt = { "menuone", "noselect" }
+opt.completeopt = { "menu", "menuone", "noselect" }
 opt.conceallevel = 0 -- so that `` is visible in markdown files
 opt.cursorline = false -- highlight the current line
 
@@ -79,7 +78,6 @@ opt.writebackup = false -- if a file is being edited by another program (or was 
 opt.wildignore = "/home/paul/**/node_modules/**"
 opt.winblend = 20
 
-opt.exrc = true
 opt.secure = true
 
 g.netrw_liststyle = 3
