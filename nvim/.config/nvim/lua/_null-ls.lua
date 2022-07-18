@@ -4,6 +4,7 @@ if not null_ls_ok then
 end
 
 local command_resolver = require("null-ls.helpers.command_resolver")
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local sources = {
   null_ls.builtins.formatting.stylua,
@@ -23,26 +24,26 @@ local sources = {
   null_ls.builtins.diagnostics.markdownlint,
   null_ls.builtins.formatting.markdownlint,
 
-  -- javascript
-  null_ls.builtins.formatting.eslint.with({
+-- javascript
+  null_ls.builtins.formatting.eslint_d.with({
     dynamic_command = function(params)
       return command_resolver.from_yarn_pnp(params)
-        or command_resolver.from_node_modules(params)
-        or vim.fn.executable(params.command) == 1 and params.command
+          or command_resolver.from_node_modules(params)
+          or vim.fn.executable(params.command) == 1 and params.command
     end,
   }),
-  null_ls.builtins.code_actions.eslint.with({
+  null_ls.builtins.code_actions.eslint_d.with({
     dynamic_command = function(params)
       return command_resolver.from_yarn_pnp(params)
-        or command_resolver.from_node_modules(params)
-        or vim.fn.executable(params.command) == 1 and params.command
+          or command_resolver.from_node_modules(params)
+          or vim.fn.executable(params.command) == 1 and params.command
     end,
   }),
-  null_ls.builtins.diagnostics.eslint.with({
+  null_ls.builtins.diagnostics.eslint_d.with({
     dynamic_command = function(params)
       return command_resolver.from_yarn_pnp(params)
-        or command_resolver.from_node_modules(params)
-        or vim.fn.executable(params.command) == 1 and params.command
+          or command_resolver.from_node_modules(params)
+          or vim.fn.executable(params.command) == 1 and params.command
     end,
   }),
 
@@ -54,4 +55,19 @@ local sources = {
   null_ls.builtins.diagnostics.rubocop,
 }
 
-null_ls.setup({ sources = sources })
+null_ls.setup({
+  sources = sources,
+  on_attach = function(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+          vim.lsp.buf.formatting_sync()
+        end,
+      })
+    end
+  end
+})

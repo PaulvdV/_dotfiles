@@ -50,12 +50,12 @@ local which_key = {
   -- see https://neovim.io/doc/user/map.html#:map-cmd
   mappings = {
     ["<leader>f"] = { utils.find_project_files, "Find File" },
-    ["<leader>p"] = { ":lua require('telescope').extensions.project.project({ noremap = true, silent = true })<cr>", "Find Project" },
+    ["<leader>p"] = { ":lua require('telescope').extensions.project.project({ noremap = true, silent = true })<cr>",
+      "Find Project" },
     ["<leader>e"] = { ":NvimTreeToggle<CR>", "File Browser" },
     ["<leader>h"] = { ":nohlsearch<CR>", "No Highlight" },
     ["H"] = { "<Plug>vem_prev_buffer-", "Buffer Previous" },
     ["L"] = { "<Plug>vem_next_buffer-", "Buffer Next" },
-    ["<leader>x"] = { "<Plug>vem_delete_buffer-", "Buffer Delete" },
     ["<leader>x"] = { ":Sayonara!<cr>", "Buffer Delete" },
     ["<leader>z"] = { ":call WindowZoom()<cr>", "Toggle Zoom" },
     ["<leader>o"] = { ":wincmd w<cr>", "Next window" },

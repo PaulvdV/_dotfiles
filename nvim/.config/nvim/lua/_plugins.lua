@@ -38,6 +38,9 @@ return packer.startup(function()
     "hrsh7th/cmp-path",
     "hrsh7th/nvim-cmp",
 
+    "hrsh7th/cmp-vsnip",
+    "hrsh7th/vim-vsnip",
+
     "jose-elias-alvarez/null-ls.nvim",
     "neovim/nvim-lspconfig",
     "tamago324/nlsp-settings.nvim",
@@ -53,7 +56,7 @@ return packer.startup(function()
   })
 
   use({
-    "nvim-treesitter/nvim-treesitter",  run = ":TSUpdate",
+    "nvim-treesitter/nvim-treesitter", run = ":TSUpdate",
     requires = {
       { "nvim-treesitter/nvim-treesitter-textobjects" },
       { "nvim-treesitter/nvim-treesitter-refactor" },

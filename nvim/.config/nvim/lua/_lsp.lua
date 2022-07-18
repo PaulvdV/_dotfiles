@@ -23,6 +23,11 @@ if not nlspsettings_ok then
   return
 end
 
+local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_ok then
+  return
+end
+
 local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_nvim_lsp_ok then
   return
@@ -30,7 +35,13 @@ end
 
 local _default_opts = win.default_opts
 
-nlspsettings.setup()
+nlspsettings.setup({
+  config_home = vim.fn.stdpath('config') .. '/nlsp-settings',
+  local_settings_dir = ".nlsp-settings",
+  local_settings_root_markers = { '.git' },
+  append_default_schemas = true,
+  loader = 'json'
+})
 
 local border = {
   { "╭", "NormalFloat" },
@@ -54,9 +65,7 @@ end
 cmp.setup({
   snippet = {
     expand = function(args)
-      -- vim.fn["vsnip#anonymous"](args.body)
-      require("luasnip").lsp_expand(args.body)
-      -- vim.fn["UltiSnips#Anon"](args.body)
+      vim.fn["vsnip#anonymous"](args.body)
     end,
   },
   mapping = {
@@ -64,7 +73,7 @@ cmp.setup({
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
-    ["<CR>"] = cmp.mapping.confirm({ select = false }),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
     ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
     ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
   },
@@ -72,14 +81,15 @@ cmp.setup({
     { name = "nvim_lsp" },
     { name = "buffer" },
     { name = "path" },
-    -- { name = "vsnip" },
-    { name = "luasnip" },
-    -- { name = "ultisnips" },
+    { name = "vsnip" },
   },
 })
 
 -- function to attach completion when setting up lsp
-local on_attach = function(client)
+local on_attach = function(client, bufnr)
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
   -- utils.bufmap("n", "ga", "lua vim.lsp.buf.code_action()")
   -- utils.bufmap("n", "gd", "lua vim.lsp.buf.definition()")
   -- utils.bufmap("n", "gr", "lua vim.lsp.buf.references()")
@@ -112,10 +122,10 @@ lsp_installer.settings({
 })
 lsp_installer.on_server_ready(function(server)
   local opts = {
-    on_attach = on_attach,
-    handlers = handlers,
-    capabilities = capabilities,
-    flags = { debounce_text_changes = 150 },
+    -- on_attach = on_attach,
+    -- handlers = handlers,
+    -- capabilities = capabilities,
+    -- flags = { debounce_text_changes = 150 },
   }
   server:setup(opts)
 end)
@@ -135,6 +145,6 @@ vim.diagnostic.config({
     source = "always",
   },
   severity_sort = true,
-  signs = false,
+  signs = true,
   update_in_insert = false,
 })
