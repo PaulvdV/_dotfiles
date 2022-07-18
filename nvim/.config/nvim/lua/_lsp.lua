@@ -23,11 +23,6 @@ if not nlspsettings_ok then
   return
 end
 
-local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_ok then
-  return
-end
-
 local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_nvim_lsp_ok then
   return
@@ -86,10 +81,7 @@ cmp.setup({
 })
 
 -- function to attach completion when setting up lsp
-local on_attach = function(client, bufnr)
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+local on_attach = function(client)
   -- utils.bufmap("n", "ga", "lua vim.lsp.buf.code_action()")
   -- utils.bufmap("n", "gd", "lua vim.lsp.buf.definition()")
   -- utils.bufmap("n", "gr", "lua vim.lsp.buf.references()")
@@ -122,10 +114,10 @@ lsp_installer.settings({
 })
 lsp_installer.on_server_ready(function(server)
   local opts = {
-    -- on_attach = on_attach,
-    -- handlers = handlers,
-    -- capabilities = capabilities,
-    -- flags = { debounce_text_changes = 150 },
+    on_attach = on_attach,
+    handlers = handlers,
+    capabilities = capabilities,
+    flags = { debounce_text_changes = 150 },
   }
   server:setup(opts)
 end)
