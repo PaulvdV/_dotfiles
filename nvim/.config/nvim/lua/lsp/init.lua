@@ -23,3 +23,4 @@ pcall(require, "lsp/nlspsettings")
 
 pcall(require, "lsp/lua")
 pcall(require, "lsp/typescript")
+pcall(require, "lsp/jsonls")

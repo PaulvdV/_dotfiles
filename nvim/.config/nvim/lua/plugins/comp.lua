@@ -1,4 +1,3 @@
-
 local cmp_ok, cmp = pcall(require, "cmp")
 if not cmp_ok then
   return

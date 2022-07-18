@@ -40,11 +40,7 @@ return function(client, bufnr)
     group = lsp_format_augroup,
     buffer = bufnr,
     callback = function()
-      lsp.buf.formatting_sync({
-        filter = function(c)
-          return c.name == "null-ls"
-        end,
-      })
+      lsp.buf.formatting_sync({})
     end
   })
 
