@@ -57,7 +57,6 @@ telescope.setup({
     generic_sorter = sorters.get_generic_fuzzy_sorter,
     winblend = 20,
     border = {},
-    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
     color_devicons = true,
     use_less = true,
     path_display = {},

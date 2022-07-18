@@ -8,7 +8,6 @@ if not utils_ok then
   return
 end
 
-
 return function(client, bufnr)
   diagnostic.config {
     underline = true,
@@ -22,6 +21,7 @@ return function(client, bufnr)
 
   -- utils.bufmap("n", "ga", "lua vim.lsp.buf.code_action()")
   -- utils.bufmap("n", "gd", "lua vim.lsp.buf.definition()")
+  -- utils.bufmap("n", "gD", "lua vim.lsp.buf.declaration()")
   -- utils.bufmap("n", "gr", "lua vim.lsp.buf.references()")
   -- utils.bufmap("n", "K", "lua vim.lsp.buf.hover()")
   -- utils.bufmap("n", "gl", "lua vim.lsp.diagnostic.show_line_diagnostics()")

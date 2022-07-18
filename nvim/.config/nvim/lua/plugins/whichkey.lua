@@ -57,7 +57,6 @@ local which_key = {
     ["H"] = { "<Plug>vem_prev_buffer-", "Buffer Previous" },
     ["L"] = { "<Plug>vem_next_buffer-", "Buffer Next" },
     ["<leader>x"] = { ":Sayonara!<cr>", "Buffer Delete" },
-    ["<leader>z"] = { ":call WindowZoom()<cr>", "Toggle Zoom" },
     ["<leader>o"] = { ":wincmd w<cr>", "Next window" },
     ["gd"] = { ":lua vim.lsp.buf.definition()<cr>", "jumpDefinition" },
     ["ga"] = { ":lua vim.lsp.buf.code_action()<cr>", "diagnosticInfo" },
@@ -98,7 +97,6 @@ local which_key = {
     ["<leader>s"] = {
       name = "Search",
       b = { ":Telescope git_branches <cr>", "Checkout branch" },
-      c = { ":Telescope colorscheme <cr>", "Colorscheme" },
       C = { ":Telescope commands <cr>", "Commands" },
       f = { ":Telescope find_files <cr>", "Find File" },
       h = { ":Telescope help_tags <cr>", "Find Help" },
@@ -109,10 +107,6 @@ local which_key = {
       R = { ":Telescope registers <cr>", "Registers" },
       t = { ":Telescope live_grep <cr>", "Text" },
       n = { ":Telescope live_grep search_dirs={os.getenv('NOTES')} <cr>", "Notes" },
-      p = {
-        ":lua require('telescope.builtin.internal').colorscheme({enable_preview = true})<cr>",
-        "Colorscheme with Preview",
-      },
     },
   },
 }

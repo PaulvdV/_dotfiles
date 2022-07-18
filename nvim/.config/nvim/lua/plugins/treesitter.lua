@@ -3,11 +3,10 @@ if not treesitter_ok then
   return
 end
 
-
 treesitter.setup({
-  ensure_installed = "all", -- one of "all", "language", or a list of languages
+  ensure_installed = "all",
   highlight = {
-    enable = true, -- false will disable the whole extension
+    enable = true,
   },
   incremental_selection = {
     enable = false,
@@ -22,12 +21,11 @@ treesitter.setup({
     smart_rename = {
       enable = true,
       keymaps = {
-        smart_rename = "grr", -- mapping to rename reference under cursor
+        smart_rename = "grr",
       },
     },
   },
   textobjects = {
-    -- syntax-aware textobjects
     enable = true,
   },
 })
