@@ -1,6 +1,6 @@
 pcall(require, "impatient")
 require("options")
-require("plugins/packer")
+require("plugins/pack")
 require("plugins/telescope")
 require("plugins/treesitter")
 require("plugins/nvim_tree")
